@@ -1,0 +1,55 @@
+<p-panel header="Sedex:">
+  <form>
+    <div class="p-fluid p-formgrid p-grid">
+
+      <div class="p-field p-formgrid p-col-2">
+        <p-inputMask id="cep" type="text" mask="99999-999" placeholder="00000-000"></p-inputMask>
+      </div>
+
+      <div class="p-field p-formgrid p-col-2">
+        <input id="cod_rastreio" type="text" pInputText maxlength=13 placeholder="OD811172122BR">
+      </div>
+
+      <div class="p-field p-formgrid p-col-1">
+        <button pButton type="button" label="Buscar" class="p-button-text p-button-text"></button>
+      </div>
+
+      <div class="p-field p-formgrid p-col-4">
+      </div>
+
+      <div class="p-field p-formgrid p-col-2">
+        <p-dropdown [options]="meses" [(ngModel)]="meses" optionLabel="mes_Texto"   aria-placeholder="Selecione"></p-dropdown>
+      </div>
+      <div class="p-field p-formgrid p-col-1">
+        <p-dropdown ></p-dropdown>
+      </div>
+      
+    </div>
+  </form>
+  <p-table [value]="itensSedex" [paginator]="true" [rows]="9">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>#</th>
+            <th>Data Postagem</th>
+            <th>Aos Cuidados</th>
+            <th>Cidade</th>
+            <th>CEP</th>
+            <th>Cód Rastreio</th>
+            <th>Valor</th>
+            <th>Pago</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-itensSedex>
+        <tr>
+            <td>{{itensSedex.sed_Codigo}}</td>
+            <td>{{itensSedex.sed_DataPostagem | date: 'dd/MM/yyyy'}}</td>
+            <td>{{itensSedex.des_Codigo.des_AcAbreviado}}</td>
+            <td>{{itensSedex.cid_Codigo.cid_Municipio}}</td>
+            <td>{{itensSedex.des_Codigo.des_CEP}}</td>
+            <td>{{itensSedex.sed_Cod_Rastreamento}}</td>
+            <td>{{itensSedex.sed_Valor}}</td>
+            <td>{{itensSedex.sed_Pago}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+</p-panel>

@@ -1,0 +1,140 @@
+<p-panel header="Cadastro">
+    <form (ngSubmit)="gravar()" >
+        <div class="p-fluid p-formgrid p-grid">
+
+            <div class="p-field p-md-4">
+                <label for="destinatarios">Destinatário</label>
+                <p-dropdown [options]="empDestinatario" optionLabel="emp_RasaoSocial"
+                    placeholder="Selecione" id="destinatarios" 
+                    [(ngModel)]="destinatario.DES_Destinatario" [ngModelOptions]="{standalone: true}"></p-dropdown>
+            </div>
+
+            <div class="p-field p-md-4">
+                <label for="input_aoscuidados">Aos Cuidadeos de:</label>
+                <input type="text" pInputText placeholder="Informe nome completo"
+                [(ngModel)]="destinatario.DES_AC" [ngModelOptions]="{standalone: true}" >
+            </div>
+            <div class="p-field p-md-2">
+                <label for="input_acabreviado">A.C. Abreviado</label>
+                <input type="text" [(ngModel)]="destinatario.DES_AcAbreviado" [ngModelOptions]="{standalone: true}"  pInputText placeholder="Informe primeiro nome" id="input_acabreviado">
+            </div>
+
+            <div class="p-field p-md-2">
+                <label for="input_cpf">CPF:</label>
+                <p-inputMask type="text"  mask="999.999.999.99" placeholder="000.000.000-00" id="input_cpf"
+                [(ngModel)]="destinatario.DES_CPF" [ngModelOptions]="{standalone: true}">
+                </p-inputMask>
+            </div>
+        </div>
+
+        <fieldset class="p-md-12">
+            <legend>Endereco</legend>
+            <div class="p-fluid p-formgrid p-grid">
+
+                <div class="p-field p-md-2">
+                    <label for="input_cep">CEP:</label>
+                    <p-inputMask type="text" mask="99.999-999" id="input_cep"
+                    [(ngModel)]="destinatario.DES_CEP" [ngModelOptions]="{standalone: true}"></p-inputMask>
+                </div>
+
+                <div class="p-field p-md-6">
+                    <label for="input_logradouro">Logradouro:</label>
+                    <input type="text" pInputText placeholder="EX: Rua T-53" id="input_logradouro"
+                    [(ngModel)]="destinatario.DES_Logradouro" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="p-field p-md-4">
+                    <label for="input_bairro">Bairro/Setor/Distrito:</label>
+                    <input type="text" pInputText placeholder="EX:Setor Marista" id="input_bairro"
+                    [(ngModel)]="destinatario.DES_Bairro" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="p-field p-md-1">
+                    <label for="input_numero">Número:</label>
+                    <input type="number" pInputText placeholder="EX:253" id="input_numero"
+                    [(ngModel)]="destinatario.DES_Numero" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="p-field p-md-5">
+                    <label for="input_quadra">Quadra/Lote/Complemento:</label>
+                    <input type="text"   pInputText placeholder="EX: Ao lado Açaí" id="input_quadra"
+                    [(ngModel)]="destinatario.DES_Complemento" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="p-field p-md-2">
+                    <label for="">Estado:</label>
+                    <p-dropdown [options]="estados" [ngModel]="estados" optionLabel="est_Estado" placeholder="Selecione"
+                        id="destinatarios"
+                        [(ngModel)]="destinatario.EST_Codigo" [ngModelOptions]="{standalone: true}"></p-dropdown>
+                </div>
+
+                <div class="p-field p-md-2">
+                    <label for="destinatarios">Cidade:</label>
+                    <p-dropdown [options]="cidades" [ngModel]="destinatario.CID_Codigo" optionLabel="cid_Municipio" 
+                    placeholder="Selecione" id="cidades" [ngModelOptions]="{standalone: true}"
+                    [filter]="true" [virtualScroll]="true" itemSize="10"></p-dropdown>
+                </div>
+
+                <div class="p-field p-md-2">
+                    <label for="logradouro">Latitude:</label>
+                    <input type="text"   pInputText placeholder="-17.3995821365749"
+                    [(ngModel)]="destinatario.DES_Latitude" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="p-field p-md-2">
+                    <label for="logradouro">Longitude:</label>
+                    <input type="text"   pInputText placeholder="-17.3995821365749"
+                    [(ngModel)]="destinatario.DES_Longitude" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="p-field p-md-2">
+                    <label for="cep">Telefone:</label>
+                    <p-inputMask type="text"   mask="(99)9999-9999"
+                    [(ngModel)]="destinatario.DES_Fixo" [ngModelOptions]="{standalone: true}"></p-inputMask>
+                </div>
+
+                <div class="p-field p-md-2">
+                    <label for="cep">Celular:</label>
+                    <p-inputMask type="text"   mask="(99)99999-9999"
+                    [(ngModel)]="destinatario.DES_Movel" [ngModelOptions]="{standalone: true}"></p-inputMask>
+                </div>
+
+                <div class="p-field p-md-2">
+                    <label for="destinatarios">Trasportadora:</label>
+                    <p-dropdown [options]="empTransportadora" [ngModel]="destinatario.DES_Transportadora" optionLabel="emp_RasaoSocial" 
+                    placeholder="Selecione" id="cidades" [ngModelOptions]="{standalone: true}" ></p-dropdown>
+                </div>
+                <div class="p-field p-md-12">
+                    <button type="submit" pButton label="Cadastrar"></button>
+                </div>
+
+            </div>
+        </fieldset>
+    </form>
+</p-panel>
+<br>
+<!--A partir deste ponto será setado a tabela dos destinatarios-->
+<!--<p-panel header="Destinatários">-->
+    <p-table [value]="destinatarios" [paginator]="true" [rows]="3">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nome:</th>
+                <th>Rua</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>CEP</th>
+                <th>Ativo?</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-destinatarios>
+            <tr>
+                <td>{{destinatarios.des_AcAbreviado}}</td>
+                <td>{{destinatarios.des_Logradouro}}</td>
+                <td>{{destinatarios.cid_Codigo.cid_Municipio}}</td>
+                <td>{{destinatarios.est_Codigo.est_UF}}</td>
+                <td>{{destinatarios.des_CEP}}</td>
+                <td>{{destinatarios.des_Ativo}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+<!--</p-panel>-->

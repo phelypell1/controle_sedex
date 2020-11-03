@@ -1,0 +1,11 @@
+.language-menu {
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+}
+
+.btn-login{
+    border-radius: 25px;
+    border: none;
+
+}
