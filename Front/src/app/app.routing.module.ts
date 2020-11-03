@@ -1,4 +1,3 @@
-import { DestinatariosModule } from './features/destinatarios/destinatarios.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -26,6 +25,11 @@ const appRoutes: Routes = [
         {
             path: 'destinatarios',
             loadChildren: () => import('src/app/features/destinatarios/destinatarios.module').then(m => m.DestinatariosModule),
+            canActivate: [AuthGuard]
+        },
+        {
+            path: 'registro-sedex',
+            loadChildren: () => import('src/app/features/registro-sedex/registro-sedex.module').then(m => m.RegistroSedexModule),
             canActivate: [AuthGuard]
         },
         {

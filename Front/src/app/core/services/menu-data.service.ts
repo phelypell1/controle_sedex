@@ -21,6 +21,9 @@ export class MenuDataService {
                 Label: 'Destinatários', Icon: 'fa-home', RouterLink: '/main/destinatarios', Childs: null, IsChildVisible: false
             },
             {
+                Label: 'registro-sedex', Icon: 'fa-home', RouterLink: '/main/registro-sedex', Childs: null, IsChildVisible: false
+            },
+            {
                 Label: 'Employees', Icon: 'fa-users', RouterLink: '/main/employees', Childs: null, IsChildVisible: false
             },
             {

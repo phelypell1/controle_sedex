@@ -1,0 +1,59 @@
+<p-panel header="Registro Sedex">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-sm-2" [hidden]="btn_new_register">
+            <button class="button-novo-registro"(click)="clickBtn_new_register()">
+                <i class="fa fa-archive" aria-hidden="true"></i> Novo Registro</button>
+        </div>
+
+        <div class="p-field p-sm-2" ng-init="btn_editar = false" [hidden]="btn_edit">
+            <button class="button-novo-registro" id="btn_editar">
+                <i class="fa fa-pencil fa-5x" aria-hidden="true"></i>Editar</button>
+        </div>
+
+        <div class="p-field p-sm-2" [hidden]="btn_save">
+            <button class="button-novo-registro">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar</button>
+        </div>
+
+        <div class="p-field p-sm-2" [hidden]="btn_cancel">
+            <button class="button-novo-registro" (click)="click_cancel()">
+                <i class="fa fa-ban" aria-hidden="true"> Cancelar</i></button>
+        </div>
+
+        <div class="p-field p-sm-2" [hidden]="btn_tag">
+            <button class="button-novo-registro">Etiqueta</button>
+        </div>
+    </div>
+    <br>
+
+        <fieldset class="p=fluid p-formgrid p-grid p-sm-12">
+            <legend>Dados para envio</legend>
+
+            <div class="p-field p-sm-2">
+                <label for="">Data de registro</label>
+                <input type="date" name="" id="" pInputText ngModel="{{hoje | date: 'yyyy-MM-dd'}}">
+            </div>
+
+            <div class="p-field p-sm-2">
+                <label for="">Data de postagem</label>
+                <input type="date" name="" id="" pInputText>
+            </div>
+
+            <div class="p-field p-sm-2 input_time">
+                <label for="">Hora</label>
+                <input type="time" name="" id="" pInputText>
+            </div>
+
+            <div class="p-field p-sm-2">
+                <label for="">Código de rastreio</label>
+                <input type="text" name="" id="" pInputText>
+            </div>
+
+            <div class="p-field p-sm-2">
+                
+            </div>
+
+
+        </fieldset>
+
+</p-panel>
