@@ -1,7 +1,7 @@
+import { Cidade } from './../models/Cidade';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Cidade } from '../models/Cidade';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,5 +13,9 @@ export class CidadesService {
 
   listarCidades(): Observable<Cidade[]>{
     return this.http.get<Cidade[]>(`${environment.API}/cidade`);
+  }
+
+  buscarCidadeId(id: Cidade): Observable<Cidade> {
+    return this.http.get<Cidade>(`${environment.API}/cidade/${id}`);
   }
 }

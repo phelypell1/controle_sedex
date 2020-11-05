@@ -9,3 +9,27 @@
 .input_time{
     width:100px;
 }
+.logo_correios{
+    margin-top: 11px;
+    height: 40px;
+    width: 50px;
+}
+.checkbox-sedex{
+    margin-top: 30px;
+}
+.div-check{
+    margin-top: -30px;
+}
+.div-check-nao{
+    margin-top: -20px;
+}
+.div-remetente{
+    margin-left: 15px;
+}
+.div-destinatario{
+    margin-left: 15px;
+    width: 610px;
+}
+.btn_incluir{
+    margin-top: 18px;
+}

@@ -1,7 +1,9 @@
 <p-panel header="Registro Sedex">
+
     <div class="p-fluid p-formgrid p-grid">
+
         <div class="p-field p-sm-2" [hidden]="btn_new_register">
-            <button class="button-novo-registro"(click)="clickBtn_new_register()">
+            <button class="button-novo-registro" (click)="clickBtn_new_register()">
                 <i class="fa fa-archive" aria-hidden="true"></i> Novo Registro</button>
         </div>
 
@@ -11,8 +13,13 @@
         </div>
 
         <div class="p-field p-sm-2" [hidden]="btn_save">
+            <button class="button-novo-registro" (click)="click_gravar()">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Gravar</button>
+        </div>
+
+        <div class="p-field p-sm-2" [hidden]="btn_Concluir">
             <button class="button-novo-registro">
-                <i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar</button>
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Concluir</button>
         </div>
 
         <div class="p-field p-sm-2" [hidden]="btn_cancel">
@@ -24,36 +31,118 @@
             <button class="button-novo-registro">Etiqueta</button>
         </div>
     </div>
-    <br>
+    <hr>
+    <div [hidden]="formulario">
+        <form action="">
+            <div class="p-fluid p-formgrid p-grid p-sm-12">
+                <fieldset class="p=fluid p-formgrid p-grid p-sm-12">
+                    <legend>Dados para envio</legend>
 
-        <fieldset class="p=fluid p-formgrid p-grid p-sm-12">
-            <legend>Dados para envio</legend>
+                    <div class="p-field p-sm-2">
+                        <label for="">Data de registro</label>
+                        <input type="date" name="" id="" pInputText ngModel="{{hoje | date: 'yyyy-MM-dd'}}">
+                    </div>
 
-            <div class="p-field p-sm-2">
-                <label for="">Data de registro</label>
-                <input type="date" name="" id="" pInputText ngModel="{{hoje | date: 'yyyy-MM-dd'}}">
+                    <div class="p-field p-sm-2">
+                        <label for="">Data de postagem</label>
+                        <input type="date" name="" id="" pInputText>
+                    </div>
+
+                    <div class="p-field p-sm-2 input_time">
+                        <label for="">Hora</label>
+                        <input type="time" name="" id="" pInputText>
+                    </div>
+
+                    <div class="p-field p-sm-2">
+                        <label for="">Código de rastreio</label>
+                        <input type="text" name="" id="" pInputText>
+                    </div>
+
+                    <div class="p-field p-sm-1">
+                        <a href="#">
+                            <img src="/assets/images/correios-logo.png" alt="" class="logo_correios"></a>
+                    </div>
+
+                    <div class="p-field p-sm-1">
+                        <label for="">Valor</label>
+                        <p-inputMask mask="999.99"></p-inputMask>
+                    </div>
+
+                    <div class="p-field p-sm-2">
+                        <input type="checkbox" name="" id="" class="checkbox-sedex">
+                        <label for="">Sedex extraviado</label>
+                    </div>
+
+                </fieldset>
             </div>
 
-            <div class="p-field p-sm-2">
-                <label for="">Data de postagem</label>
-                <input type="date" name="" id="" pInputText>
+            <div class="p-fluid p-formgrid p-grid p-sm-12">
+                <fieldset class="p=fluid p-formgrid p-grid p-sm-1">
+                    <legend>Pago?</legend>
+                    <div class="div-check">
+                        <input type="checkbox" name="" id="" class="checkbox-sedex">
+                        <label for="">SIM</label>
+                    </div>
+                    <div class="div-check-nao">
+                        <input type="checkbox" name="" id="" class="checkbox-sedex">
+                        <label for="">NÃO</label>
+                    </div>
+
+                </fieldset>
+                <fieldset class="p=fluid p-formgrid p-grid p-sm-4 div-remetente">
+                    <legend>Remetente:</legend>
+                    <div class="p-field p-sm-6">
+                        <label for="">Empresa</label>
+                        <p-dropdown [options]="empresaRemetente" optionLabel="emp_Descricao"></p-dropdown>
+                    </div>
+                    <div class="p-field p-sm-6">
+                        <label for="">Expeditor</label>
+                        <p-dropdown [options]="remetente_ativo" optionLabel="rem_Abreviado"></p-dropdown>
+                    </div>
+                </fieldset>
+                <fieldset class="p=fluid p-formgrid p-grid p-sm-6 div-destinatario">
+                    <legend>Destinatário:</legend>
+
+                    <div class="p-field p-sm-2">
+                        <label for="">Estado</label>
+                        <p-dropdown [options]="estados" optionLabel="est_UF"></p-dropdown>
+                    </div>
+
+                    <div class="p-field p-sm-5">
+                        <label for="">Cidade</label>
+                        <p-dropdown [options]="cidades" optionLabel="cid_Municipio"
+                        [filter]="true" [virtualScroll]="true" itemSize="10"></p-dropdown>
+                    </div>
+
+
+
+                    <div class="p-field p-sm-5">
+                        <label for="">Aos Cuidados de:</label>
+                        <p-dropdown></p-dropdown>
+                    </div>
+                </fieldset>
             </div>
+        </form>
+    </div>
+    <div [hidden]="descricao_item">
+        <div class="p-fluid p-formgrid p-grid p-sm-12">
+            <fieldset class="p-fluid p-formgrid p-grid p-sm-12">
+                <legend>Itens Enviados</legend>
+                <div class="p-field p-sm-3">
+                    <label for="">Tipo Item:</label>
+                    <p-dropdown></p-dropdown>
+                </div>
 
-            <div class="p-field p-sm-2 input_time">
-                <label for="">Hora</label>
-                <input type="time" name="" id="" pInputText>
-            </div>
+                <div class="p-field p-sm-6">
+                    <label for="">Descrição do item</label>
+                    <input type="text" name="" id="" pInputText>
+                </div>
 
-            <div class="p-field p-sm-2">
-                <label for="">Código de rastreio</label>
-                <input type="text" name="" id="" pInputText>
-            </div>
+                <div class="p-field p-sm-2">
+                    <p-button label="Incluir" class="p-button-success btn_incluir"></p-button>
+                </div>
 
-            <div class="p-field p-sm-2">
-                
-            </div>
-
-
-        </fieldset>
-
+            </fieldset>
+        </div>
+    </div>
 </p-panel>

@@ -30,6 +30,11 @@ public class cadRemetenteController {
 		return ResponseEntity.ok(remetenteRepository.findAll());
 	}
 	
+	@GetMapping("/ativo")
+	public ResponseEntity<Iterable<cadRemetente>> getRemAtivo(){
+		return ResponseEntity.ok(remetenteRepository.findRemetenteAtivo());
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<cadRemetente> getById(@PathVariable("id") long id){
 		return remetenteRepository.findById(id).map(record -> ResponseEntity.ok().body(record))

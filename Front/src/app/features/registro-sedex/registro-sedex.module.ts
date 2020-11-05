@@ -1,3 +1,4 @@
+import { InputMaskModule } from 'primeng';
 import { RegistroSedexComponent } from './registro-sedex.component';
 import { RegistroSedexRoutingModule } from './registro-sedex.routing.module';
 import { AppCommonModule } from 'src/app/app.common.module';
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     AppCommonModule,
-    RegistroSedexRoutingModule
+    RegistroSedexRoutingModule,
+    InputMaskModule
   ]
 })
 export class RegistroSedexModule { }
